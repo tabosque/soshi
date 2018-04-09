@@ -12,3 +12,23 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'bootstrap_form',
+    git: 'https://github.com/bootstrap-ruby/bootstrap_form.git',
+    branch: 'master'
+
+gem 'redcarpet', '~> 2.3.0'
+
+gem 'paranoia', '~> 2.2'
+
+gem "slim-rails"
+
+group :development do
+  gem 'pry-rails'
+  gem 'better_errors'
+end
