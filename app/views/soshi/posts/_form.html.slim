@@ -1,0 +1,4 @@
+= bootstrap_form_for @post do |f|
+  = f.text_field :title
+  = f.text_area :body, cols: 30, rows: 40, class: 'soshi-markdown'
+  = f.submit class: 'btn btn-default'
