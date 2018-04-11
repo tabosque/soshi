@@ -11,6 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require fontawesome-all
+//= require tag-it
 //= require_tree .
+
+$(document).ready(function() {
+  $('#post_tag_list').tagit({
+    singleField: true,
+    availableTags: usedTags
+  });
+  $('.tagit').addClass('form-control');
+});

@@ -16,15 +16,18 @@ gemspec
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.3'
 
 gem 'bootstrap_form',
     git: 'https://github.com/bootstrap-ruby/bootstrap_form.git',
     branch: 'master'
 
-gem 'redcarpet', '~> 2.3.0'
+gem 'redcarpet', '~> 2.3'
 
 gem 'paranoia', '~> 2.2'
+
+gem 'acts-as-taggable-on', '~> 5.0'
+gem 'tag-it-rails'
 
 gem "slim-rails"
 
