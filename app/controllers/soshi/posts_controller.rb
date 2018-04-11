@@ -2,7 +2,7 @@ require_dependency "soshi/application_controller"
 
 module Soshi
   class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_post, only: [:edit, :update, :destroy]
 
     # GET /posts
     def index
@@ -11,6 +11,8 @@ module Soshi
 
     # GET /posts/1
     def show
+      category = Category.find_by!(slug: params[:category_slug])
+      @post = Post.find_by!(id: params[:id], category: category)
     end
 
     # GET /posts/new
@@ -27,7 +29,7 @@ module Soshi
       @post = Post.new(post_params)
 
       if @post.save
-        redirect_to @post, notice: 'Post was successfully created.'
+        redirect_to category_post_path(@post.category, @post), notice: 'Post was successfully created.'
       else
         render :new
       end
@@ -36,7 +38,7 @@ module Soshi
     # PATCH/PUT /posts/1
     def update
       if @post.update(post_params)
-        redirect_to @post, notice: 'Post was successfully updated.'
+        redirect_to category_post_path(@post.category, @post), notice: 'Post was successfully updated.'
       else
         render :edit
       end
@@ -56,7 +58,7 @@ module Soshi
 
       # Only allow a trusted parameter "white list" through.
       def post_params
-        params.require(:post).permit(:title, :body, :deleted_at)
+        params.require(:post).permit(:title, :body, :category_id)
       end
   end
 end

@@ -1,4 +1,11 @@
 = bootstrap_form_for @post do |f|
+  - if @post.errors.any?
+    ul
+      - @post.errors.full_messages.each do |message|
+        li
+          = message
+
   = f.text_field :title
   = f.text_area :body, cols: 30, rows: 40, class: 'soshi-markdown'
+  = f.collection_select :category_id, Soshi::Category.all, :id, :name
   = f.submit class: 'btn btn-default'
