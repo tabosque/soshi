@@ -1,4 +1,8 @@
 Soshi::Engine.routes.draw do
   root to: "posts#index"
-  resources :posts
+  resources :categories, except: [:show]
+  resources :posts, except: [:show]
+  resources :categories, param: :slug, path: '/', only: [:show] do
+    resources :posts, path: '/', only: [:show]
+  end
 end

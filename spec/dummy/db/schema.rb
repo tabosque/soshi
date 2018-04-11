@@ -10,14 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409032036) do
+ActiveRecord::Schema.define(version: 20180409090902) do
 
-  create_table "soshi_posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "deleted_at"
+  create_table "soshi_categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["slug"], name: "index_soshi_categories_on_slug", unique: true
+  end
+
+  create_table "soshi_posts", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["category_id"], name: "index_soshi_posts_on_category_id"
   end
 
 end
