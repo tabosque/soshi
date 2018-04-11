@@ -3,6 +3,7 @@ require_dependency "soshi/application_controller"
 module Soshi
   class PostsController < ApplicationController
     before_action :set_post, only: [:edit, :update, :destroy]
+    before_action :set_used_tags, only: [:new, :edit, :create, :update]
 
     # GET /posts
     def index
@@ -56,9 +57,18 @@ module Soshi
         @post = Post.find(params[:id])
       end
 
+      def set_used_tags
+        @used_tags = ActsAsTaggableOn::Tag.all
+      end
+
       # Only allow a trusted parameter "white list" through.
       def post_params
-        params.require(:post).permit(:title, :body, :category_id)
+        params.require(:post).permit(
+          :title,
+          :body,
+          :category_id,
+          :tag_list,
+        )
       end
   end
 end
