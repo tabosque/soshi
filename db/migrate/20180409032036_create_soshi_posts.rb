@@ -4,6 +4,7 @@ class CreateSoshiPosts < ActiveRecord::Migration[5.1]
       t.string :title, null: false
       t.text :body, null: false
       t.integer :category_id, null: false, foreign_key: true
+      t.string :description, null: false
       t.timestamps
       t.datetime :deleted_at
     end

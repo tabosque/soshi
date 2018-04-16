@@ -6,5 +6,6 @@ module Soshi
 
     validates :title, presence: true
     validates :body, presence: true
+    validates :description, presence: true
   end
 end

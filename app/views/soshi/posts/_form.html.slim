@@ -11,7 +11,7 @@
   .form-group
     = f.label :tag_list, "Tags", class: 'control-label'
     = text_field_tag 'post[tag_list]', @post.tag_list.join(',')
-    - if @used_tags.present?
-      javascript:
-        let usedTags = #{raw @used_tags.pluck(:name)};
+    javascript:
+      let usedTags = #{raw @used_tags.pluck(:name)};
+  = f.text_area :description, cols: 30, rows: 2
   = f.submit class: 'btn btn-default'
