@@ -17,7 +17,6 @@ module Soshi
 
     def slug_cannot_be_assigned_prohibited_words
       prohibited_words = ['posts', 'categories', 'tags'] + CUSTOM_PROHIBITED_WORDS
-      # binding.pry
       errors.add(:slug, "に「#{slug}」は使用できません。") if prohibited_words.include?(slug)
     end
   end
