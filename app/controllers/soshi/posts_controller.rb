@@ -68,7 +68,8 @@ module Soshi
           :body,
           :category_id,
           :tag_list,
-          :description
+          :description,
+          :image,
         )
       end
   end

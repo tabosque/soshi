@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "bootstrap_form"
   s.add_dependency "acts-as-taggable-on", "~> 5.0"
   s.add_dependency "tag-it-rails"
+  s.add_dependency "paperclip"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "pry-rails"

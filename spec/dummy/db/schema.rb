@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416023063) do
+ActiveRecord::Schema.define(version: 20180416024150) do
 
   create_table "soshi_categories", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(version: 20180416023063) do
     t.text "body", null: false
     t.integer "category_id", null: false
     t.string "description", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
