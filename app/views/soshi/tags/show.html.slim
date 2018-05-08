@@ -1,0 +1,9 @@
+h2 #{@tag.name}
+
+h3 Posts
+ul
+  - @posts.each do |post|
+    li
+      = link_to post.title, post_path(post)
+
+= link_to 'Back', tags_path

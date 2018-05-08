@@ -29,6 +29,8 @@ gem 'paranoia', '~> 2.2'
 gem 'acts-as-taggable-on', '~> 5.0'
 gem 'tag-it-rails'
 
+gem 'paperclip'
+
 gem "slim-rails"
 
 group :development do

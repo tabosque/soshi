@@ -1,2 +1,10 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(function() {
+  $("#post_image").change(function(){
+    var image = $(this).prop('files')[0];
+    var reader = new FileReader();
+    reader.onload = function() {
+      $('#image-preview img').attr('src', reader.result);
+    }
+    reader.readAsDataURL(image);
+  });
+});

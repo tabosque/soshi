@@ -6,6 +6,7 @@ require 'redcarpet'
 require 'paranoia'
 require 'acts-as-taggable-on'
 require 'tag-it-rails'
+require 'paperclip'
 
 module Soshi
   class Engine < ::Rails::Engine
