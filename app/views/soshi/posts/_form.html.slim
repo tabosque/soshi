@@ -17,4 +17,15 @@
   = f.file_field :image
   #image-preview.image-preview
     img src="#{@post.persisted? && @post.image.present? ? @post.image.url : ''}"
-  = f.submit class: 'btn btn-default'
+
+  .form-group
+    label Status : #{@post.status}
+    br
+    - if @post.published?
+      = f.submit 'Update post', class: 'btn btn-default'
+      = f.submit 'To private', name: 'draft', class: 'btn btn-default'
+    - else
+      = f.submit 'Publish post', class: 'btn btn-default'
+      = f.submit 'Save as draft', name: 'draft', class: 'btn btn-default'
+    br
+    = link_to 'Delete post', @post, method: :delete, data: {confirm: 'Are you sure?'}

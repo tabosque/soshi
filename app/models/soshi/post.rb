@@ -15,5 +15,15 @@ module Soshi
       hash_secret: "longSecretString",
       default_url: "/default-ogp-image.png"
     validates_attachment :image, presence: true, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+
+    enum status: {draft: 0, published: 1}
+
+    def published!
+      self.update(status: 1, published_at: Time.current)
+    end
+
+    def draft!
+      self.update(status: 0, published_at: nil)
+    end
   end
 end

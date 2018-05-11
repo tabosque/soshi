@@ -29,8 +29,13 @@ module Soshi
     def create
       @post = Post.new(post_params)
 
-      if @post.save
-        redirect_to category_post_path(@post.category, @post), notice: 'Post was successfully created.'
+      if @post.save(validate: !params[:draft].present?)
+        change_status
+        if params[:draft].present?
+          redirect_to edit_post_path(@post), notice: 'Post was successfully saved.'
+        else
+          redirect_to category_post_path(@post.category, @post), notice: 'Post was successfully created.'
+        end
       else
         render :new
       end
@@ -38,8 +43,14 @@ module Soshi
 
     # PATCH/PUT /posts/1
     def update
-      if @post.update(post_params)
-        redirect_to category_post_path(@post.category, @post), notice: 'Post was successfully updated.'
+      @post.assign_attributes(post_params)
+      if @post.save(validate: !params[:draft].present?)
+        change_status
+        if params[:draft].present?
+          redirect_to edit_post_path(@post), notice: 'Post was successfully to private.'
+        else
+          redirect_to category_post_path(@post.category, @post), notice: 'Post was successfully updated.'
+        end
       else
         render :edit
       end
@@ -47,6 +58,7 @@ module Soshi
 
     # DELETE /posts/1
     def destroy
+      @post.draft!
       @post.destroy
       redirect_to posts_url, notice: 'Post was successfully destroyed.'
     end
@@ -71,6 +83,14 @@ module Soshi
           :description,
           :image,
         )
+      end
+
+      def change_status
+        if params[:draft].present?
+          @post.draft! 
+        else
+          @post.published! if @post.draft?
+        end
       end
   end
 end
