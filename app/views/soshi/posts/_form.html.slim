@@ -27,3 +27,5 @@
     - else
       = f.submit 'Publish post', class: 'btn btn-default'
       = f.submit 'Save as draft', name: 'draft', class: 'btn btn-default'
+    br
+    = link_to 'Delete post', @post, method: :delete, data: {confirm: 'Are you sure?'}

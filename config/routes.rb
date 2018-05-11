@@ -8,6 +8,4 @@ Soshi::Engine.routes.draw do
   resources :categories, param: :slug, path: '/', except: [:index, :new, :create] do
     resources :posts, path: '/', only: [:show]
   end
-
-
 end

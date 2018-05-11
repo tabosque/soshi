@@ -58,6 +58,7 @@ module Soshi
 
     # DELETE /posts/1
     def destroy
+      @post.draft!
       @post.destroy
       redirect_to posts_url, notice: 'Post was successfully destroyed.'
     end
